@@ -1,0 +1,159 @@
+.nav-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+
+
+    a {
+        text-decoration: none;
+        text-transform: none;
+        color: black;
+    }
+
+    @media (max-width:370px) {
+        padding: 0 10px;
+    }
+
+    .logo {
+        // width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10.5px;
+        gap: 10px;
+
+        @media (max-width:670px) {
+            // width: 50%;
+            justify-content: initial;
+        }
+
+        h1 {
+            font-weight: 501;
+
+            @media (max-width:670px) {
+                font-size: 16px;
+            }
+
+            @media (max-width:290px) {
+                font-size: 12px;
+            }
+
+        }
+
+        img {
+            width: 24px;
+
+        }
+
+    }
+
+    .mid-section {
+        display: flex;
+        /* gap: 40px; */
+        align-items: center;
+        width: 40%;
+        justify-content: space-around;
+
+
+        @media(max-width:760px) {
+            // width: 60%;
+        }
+
+        @media(max-width:615px){
+            display: none;
+        }
+
+
+
+        a {
+            text-decoration: none;
+            text-transform: none;
+            color: black;
+            font-weight: 500;
+        }
+    }
+
+
+    .notification {
+        margin-bottom: 0;
+
+        @media(max-width:615px){
+            display: none;
+        }
+
+
+
+        a {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        svg {
+            font-size: 25px !important;
+            color: black;
+
+            :hover {
+                color: black;
+            }
+        }
+
+
+    }
+
+    .cross-bar {
+        display: none;
+        cursor: pointer;
+
+        @media(max-width:615px){
+            display: initial;
+        }
+
+
+        a {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        svg {
+            font-size: 25px !important;
+            color: black;
+
+            :hover {
+                color: black;
+            }
+        }
+
+        
+    }
+}
+
+
+
+
+
+.ant-drawer{
+    display:none !important;
+    
+        @media(max-width:615px){
+            display: initial !important;
+           }
+
+
+
+    }
+    
+      .ant-drawer-body {
+        padding: 8px;
+      }
+      
+    
+    

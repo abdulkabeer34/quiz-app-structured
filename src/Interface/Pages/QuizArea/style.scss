@@ -1,0 +1,140 @@
+.quiz-area-main {
+    padding: 0 50px;
+    position: relative;
+
+    .area {
+
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #ffffffdb;
+        backdrop-filter: blur(3.5px);
+        z-index: 999;
+    }
+
+    .quiz-progress-bar {
+        height: 2px;
+        background-color: rgb(88, 169, 22);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        transition: width .5s ease;
+    }
+
+    @media(max-width:514px) {
+        padding: 0 15px;
+    }
+
+    .upper-area {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .rout-link {
+            // background-color: white;
+            text-decoration: none;
+            color: white;
+        }
+
+        .upper-area-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .left {
+                font-size: 29px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @media(max-width:350px) {
+                    font-size: 18px !important;
+                }
+            }
+
+            .right {
+                p {
+                    font-size: 10px;
+                    color: #5d5d5d;
+                    font-weight: 500;
+
+                    @media(max-width:350px) {
+                        font-size: 7px !important;
+                    }
+                }
+
+                h2 {
+                    font-size: 18px;
+
+                    @media(max-width:350px) {
+                        font-size: 14px !important;
+                    }
+                }
+            }
+
+        }
+        .ant-btn {
+            :hover {
+                color: white !important;
+            }
+            color: white !important;
+        }
+
+
+        .upper-area-right {
+            .btn {
+                font-weight: 600 I !important;
+                background: #166534 !important;
+                margin-top: 0 !important;
+
+                @media(max-width:350px) {
+                    width: 100px !important;
+                    font-size: 13px !important;
+                }
+
+              
+                :hover {
+                    color: white !important;
+                }
+            }
+        }
+
+    }
+
+    .mid-area {
+        margin-top: 30px;
+        height: 100%;
+        min-height: 240px;
+    }
+
+    .bottom-area {
+        margin-top: 70px;
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media(max-width:468px) {
+            margin-top: 30px;
+        }
+
+
+        .antd-btn {
+            background-color: transparent;
+            color: black;
+            border: 2px solid black;
+
+            @media(max-width:468px) {
+                font-size: 13px !important;
+            }
+
+            @media(max-width:350px) {
+                font-size: 10px !important;
+            }
+        }
+    }
+}
