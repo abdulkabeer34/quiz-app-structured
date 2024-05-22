@@ -10,16 +10,17 @@ export const ContactList = ({ questions, confirmLoading }) => {
   const [buttonsLoading, setButtonsLoading] = useState([]);
 
   const { loginData: { data: contactList, isLoading }} = useLoginQuery(onSuccess);
-  const { sendNotificationMutation } = useQuizNotificationQuery();
+  const { sendNotificationMutation } = useQuizNotificationQuery(token);
 
   function onSuccess() {
     setButtonsLoading(Array(contactList.length).fill(false));
   }
 
-  const sendNotification = async ({token,index})=>{
+  const sendNotification = async ({index})=>{
     setButtonsLoading([...buttonsLoading.slice(0,index),true,...buttonsLoading.slice(index+1)])
     await  sendNotificationMutation.mutateAsync({ token, data:questions })
-    setButtonsLoading([...buttonsLoading.slice(0,index),true,...buttonsLoading.slice(index+1)])
+    setButtonsLoading([...buttonsLoading.slice(0,index),false,...buttonsLoading.slice(index+1)])
+
   }
   
 
@@ -46,7 +47,9 @@ export const ContactList = ({ questions, confirmLoading }) => {
               <div className="send-button">
                 <Button
                   loading={buttonsLoading[index] || confirmLoading}
-                  onClick={() => sendNotification({id:item.id,index})}
+                  onClick={() =>
+                   sendNotification({index,})
+                  }
                 >
                   Send
                 </Button>

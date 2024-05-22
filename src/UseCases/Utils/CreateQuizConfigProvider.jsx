@@ -9,10 +9,12 @@ export const CreateQuizConfigProvider = ({ children }) => {
           colorBgContainer: "tranparent",
           colorBorderSecondary: "black",
           colorPrimary: "black",
+          controlItemBgActive:"#e2e2e2"
+
         },
         components: {
           Input: {
-            // activeBg: "none",
+            // activeBg: "white",
             activeShadow: "black",
             activeBorderColor: "black",
             hoverBorderColor: "black",

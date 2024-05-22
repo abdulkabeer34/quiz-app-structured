@@ -26,6 +26,8 @@ export const sendNotifications = async ({token,data}) => {
 
   const response2 = await setPastQuizHistory({data,userId:token});
 
+
+ console.log("hello wrold")
 };
 
 export const RemoveNotification = async (token,dataId)=>{
@@ -53,6 +55,7 @@ export const sendNotificationsAll  = async ({contactList,data,token})=>{
 
 
 export const getNotifications = async (token) => {
+  console.log(token)
   const api = `http://127.0.0.3:3003/notifications/${token}`;
   const { data } = await axios.get(api);
 

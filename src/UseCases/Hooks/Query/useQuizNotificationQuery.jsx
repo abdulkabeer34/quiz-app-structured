@@ -9,8 +9,11 @@ import {
 export const useQuizNotificationQuery = ( token) => {
   const queryClient = useQueryClient();
 
+
+  console.log(token)
+
   const queryData = useQuery({
-    queryKey: ["notificationsHistory"],
+    queryKey: ["notificationsHistory",token],
     queryFn: () => getNotifications(token),
   });
 
@@ -21,7 +24,7 @@ export const useQuizNotificationQuery = ( token) => {
 
 
   const sendNotificationMutation = useMutation({
-    mutationFn: (data) => sendNotifications(data),
+    mutationFn: sendNotifications,
     queryKey: ["sendNotifications"],
 
   })

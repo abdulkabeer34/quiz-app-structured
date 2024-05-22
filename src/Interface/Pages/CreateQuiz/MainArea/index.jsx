@@ -8,7 +8,13 @@ import { ContactList } from "../ContactList";
 import { AntdModal, CreateQuizConfigProvider, FloatingButtonAntd, basicInfo, useCreateQuizHandler } from "../../../../UseCases";
 
 export const CreateQuiz = () => {
-  const [questions, setQuestion] = useState({  quiz: [],  basicInfo,  dataId: ""});
+  const [questions, setQuestion] = useState({
+    quiz: [],
+    basicInfo,
+    dataId: "",
+  });
+
+
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const [open, setOpen] = useState(false);
@@ -21,17 +27,18 @@ export const CreateQuiz = () => {
   const {loginData:{data:contactList,isLoading}} = useLoginQuery();
   const {sendNotificationsAllMutation } = useQuizNotificationQuery();
 
+
+  if(isLoading) return;
+
   const sendALl = async () => {
     setConfirmLoading(true);
-    await sendNotificationsAllMutation.mutateAsync({contactList,data:questions,setConfirmLoading,token})
+    await sendNotificationsAllMutation.mutateAsync({contactList,data:questions,token})
     setConfirmLoading(false);
     setOpen(false)
   };
 
 
 
-
-  if(isLoading) return;
 
   return (
     <div className="create-quiz-main">
@@ -151,3 +158,4 @@ export const CreateQuiz = () => {
     </div>
   );
 };
+
