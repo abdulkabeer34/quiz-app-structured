@@ -12,11 +12,17 @@
         gap: 24px;
         padding: 24px;
 
-        .contacts {
+        .contact{
             // Styling for the contacts container
             display: flex;
             align-items: center;
             gap: 16px;
+            justify-content: space-between;
+
+            .main-info{
+                display: flex;
+                gap: 20px;
+            }
 
             .image {
                 // Styling for the image within the contacts container
