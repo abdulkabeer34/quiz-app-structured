@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import "./style.scss";
-import { Button, ConfigProvider, Form, InputNumber, message } from "antd";
-import { AntdCascader, CustomModalAntd, FormItem } from "./StyledComponents";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setData , CategoriesDataSet, DifficultyDataSet, TypeDataSet,useHandleSubmitQuizQuery} from "../../../UseCases";
+import React, { useEffect, useState } from 'react';
+import './style.scss';
+import { Button, ConfigProvider, Form, InputNumber, message } from 'antd';
+import { AntdCascader, CustomModalAntd, FormItem } from './styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setData , CATEGORIES_DATASET, DIFFICULTY_DATASET, TYPE_DATASET,useHandleFormSubmit} from '../../../UseCases';
 
 export const Home = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
-  const {mutation} = useHandleSubmitQuizQuery()
+  const {mutation} = useHandleFormSubmit()
 
   const warning = ({ content }) => {
     messageApi.open({
-      type: "warning",
+      type: 'warning',
       content,
     });
   };
 
-  const startQuiz = async (formData) => {
+  const handleFormSubmit = async (formData) => {
     setLoading(true)
     const props = await  mutation.mutateAsync({formData,userId: token});
     setLoading(false)
@@ -30,7 +30,7 @@ export const Home = () => {
     if (!props) {
       warning({
         content:
-          "interval server error , try selecting different options instead",
+          'interval server error , try selecting different options instead',
       });
       return;
     }
@@ -39,20 +39,27 @@ export const Home = () => {
     navigate(`/quiz-area/${dataId}/0`);
   };
 
+
+  
+  useEffect(() => {
+    document.title = "Home";
+  }, [])
+  
+
   return (
     
-    <div className="home-main">
+    <div className='home-main flex align-center flex-column text-center'>
       {contextHolder}
-      <ConfigProvider theme={{ token: { colorPrimary: "black" } }}>
-        <div className="center">
-          <h1>My Quiz App</h1>
-          <p>
+      <ConfigProvider theme={{ token: { colorPrimary: 'black' } }}>
+        <div className='center  flex align-center flex-column'>
+          <h1 className='main-heading'>My Quiz App</h1>
+          <p className='main-details'>
             Embark on a journey of discovery through captivating quizzes
             tailored to your interests.
           </p>
           <button
-            className="button-50"
-            role="button"
+            className='button-50 text-white  cursor-pointer text-center'
+            role='button'
             onClick={() => setOpen(true)}
           >
             Take a Quiz
@@ -67,42 +74,40 @@ export const Home = () => {
         >
           <h1>Enter the Quiz data</h1>
           <Form
-            onFinish={(e) => startQuiz(e)}
+          layout='vertical'
+            onFinish={(e) => handleFormSubmit(e)}
             initialValues={{
               amount: 3,
-              category: "any",
-              difficulty: "any",
-              type: "any",
+              category: 'any',
+              difficulty: 'any',
+              type: 'any',
             }}
           >
-            <div className="form-items">
-              <FormItem className="form-item" width="50%">
-                <p>Number of Questions:</p>
-                <Form.Item name="amount">
+            <div className='form-items'>
+              <FormItem className='form-item' width='50%'>
+                <Form.Item label='Number of Questions:'    name='amount'>
                   <InputNumber min={1} max={100} />
                 </Form.Item>
               </FormItem>
-              <FormItem width="40%">
-                <p>Select Category:</p>
-                <Form.Item name="category">
-                  <AntdCascader options={CategoriesDataSet} />
+              <FormItem width='40%'>
+                {/* <p>Select Category:</p> */}
+                <Form.Item label='Select Category:' name='category'>
+                  <AntdCascader options={CATEGORIES_DATASET} />
                 </Form.Item>
               </FormItem>
 
-              <FormItem width="50%">
-                <p>Select Difficulty:</p>
-                <Form.Item name="difficulty">
-                  <AntdCascader options={DifficultyDataSet} />
+              <FormItem width='50%'>
+                <Form.Item label='Select Difficulty:' name='difficulty'>
+                  <AntdCascader options={DIFFICULTY_DATASET} />
                 </Form.Item>
               </FormItem>
-              <FormItem width="40%">
-                <p>Select Type:</p>
-                <Form.Item name="type">
-                  <AntdCascader options={TypeDataSet} />
+              <FormItem width='40%'>
+                <Form.Item label='Select Type:' name='type'>
+                  <AntdCascader options={TYPE_DATASET} />
                 </Form.Item>
               </FormItem>
             </div>
-            <Button loading={loading} className="submit-btn" htmlType="submit">
+            <Button loading={loading} className='submit-btn text-white' htmlType='submit'>
               Start The Quiz
             </Button>
           </Form>

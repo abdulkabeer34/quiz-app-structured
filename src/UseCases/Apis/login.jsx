@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const SetUpUserQuizPastHistory = async (token) => {
   try {
-    await axios.post("http://127.0.0.3:3003/quizPastHistory/", {
+    await axios.post('http://127.0.0.3:3003/quizPastHistory/', {
       id: token,
       data: [],
     });
@@ -15,7 +15,7 @@ export const SetUpUserQuizPastHistory = async (token) => {
 
 export const setUpNotifications  = async (token)=>{
   try {
-    await axios.post("http://127.0.0.3:3003/notifications/", {
+    await axios.post('http://127.0.0.3:3003/notifications/', {
       id: token,
       data: [],
     });
@@ -27,7 +27,7 @@ export const setUpNotifications  = async (token)=>{
 
 export const getLogins = async () => {
   try {
-    const { data } = await axios.get("http://127.0.0.3:3003/users");
+    const { data } = await axios.get('http://127.0.0.3:3003/users');
     return data;
   } catch (error) {
     return false;

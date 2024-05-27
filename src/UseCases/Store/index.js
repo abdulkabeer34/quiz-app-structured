@@ -1,5 +1,5 @@
-export  * from "./Redux/QuizStore";
-export  * from "./Redux/QuizAreaStore";
-export  * from "./Redux/Store";
-export  * from "./ContextApi/MediaRecorderStore";
+export  * from './Redux/quiz-store';
+export  * from './Redux/quiz-area-store';
+export  * from './Redux/store';
+export  * from './ContextApi/media-recorder-store';
 

@@ -1,3 +1,3 @@
 export { getLogins} from './login'
-export {HandleSubmit} from './quizDataFetching'
-export * from './QuizHistory'
+export {HandleSubmit} from './quiz-data-fetching'
+export * from './quiz-history'

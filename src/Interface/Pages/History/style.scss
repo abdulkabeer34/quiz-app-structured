@@ -1,29 +1,26 @@
 .history-main {
     padding: 30px 50px;
 
-
     @media (max-width:370px) {
-        padding: 30px 10px;
+        padding-bottom: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 30px
     }
 
     .upper-area {
         height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
-        h2 {
+        .heading {
             font-weight: 501;
 
             @media (max-width:670px) {
-                font-size: 16px;
+                font-size: 16px
             }
 
             @media (max-width:290px) {
-                font-size: 12px;
+                font-size: 12px
             }
-
         }
-
     }
 }

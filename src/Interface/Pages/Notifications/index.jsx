@@ -1,19 +1,19 @@
-import React from "react";
-import "./style.scss";
-import { IoSettingsOutline } from "react-icons/io5";
-import { Dropdown, Skeleton, Empty } from "antd";
-import { IoEllipsisHorizontal } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
-import { GiCrossMark } from "react-icons/gi";
-import { useQuizNotificationQuery } from "../../../UseCases";
-import { FullWidthSkeletonInput } from "./styledComponents";
+import React, { useEffect } from 'react';
+import './style.scss';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { Dropdown,  Empty } from 'antd';
+import { IoEllipsisHorizontal } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
+import { FaCheck } from 'react-icons/fa';
+import { GiCrossMark } from 'react-icons/gi';
+import { useQuizNotification } from '../../../UseCases';
+import { FullWidthSkeletonInput } from './styled-components';
 
 export const Notifications = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   
-  const { queryData, updateNotificationMutation } = useQuizNotificationQuery(token);
+  const { queryData, updateNotificationMutation } = useQuizNotification(token);
   const { data, isLoading } = queryData;
 
   const removeItem = async (index, dataId) => {
@@ -31,15 +31,22 @@ export const Notifications = () => {
     updateNotificationMutation.mutate(newData);
   };
 
+
+  
+  useEffect(() => {
+    document.title = "Notifications";
+  }, [])
+  
+
   return (
     <>
-      <div className="notifications-main">
-        <div className="center">
-          <div className="heading">
+      <div className='notifications-main flex-column flex align-center justify-center '>
+        <div className='center'>
+          <div className='heading flex align-center justify-between'>
             <h1>Notifications</h1>
-            <IoSettingsOutline />
+            <IoSettingsOutline className='settings-icon'/>
           </div>
-          <div className="notifications">
+          <div className='notifications'>
             {isLoading ? (
               Array(10).fill(null).map((item,index)=> <FullWidthSkeletonInput $index={index} key={index}   active/>)
             ) : !data.data.length ? (
@@ -48,7 +55,7 @@ export const Notifications = () => {
               data.data.map((item, index) => {
                 const items = [
                   {
-                    key: "1",
+                    key: '1',
                     label: (
                       <p onClick={() => removeItem(index, item.dataId)}>
                         Remove Item
@@ -56,7 +63,7 @@ export const Notifications = () => {
                     ),
                   },
                   {
-                    key: "2",
+                    key: '2',
                     label: item.read ? (
                       <p onClick={() => markAsReadorUnread(index, false)}>
                         mark as unread
@@ -68,7 +75,7 @@ export const Notifications = () => {
                     ),
                   },
                   {
-                    key: "3",
+                    key: '3',
                     label: (
                       <p onClick={() => navigate(`/quiz-area/${item.dataId}/0`)}>
                         Open Item
@@ -77,35 +84,38 @@ export const Notifications = () => {
                   },
                 ];
 
+
+                
+
                 return (
-                  <div className="notification" key={index}>
-                    <div className="left">
-                      <div className="image">
-                        <img src="https://ui.shadcn.com/avatars/01.png" alt="" />
+                  <div className='notification cursor-pointer flex align-center justify-between' key={index}>
+                    <div className='left flex align-center'>
+                      <div className='image'>
+                        <img loading='lazy'  className='border-rounded' src='https://ui.shadcn.com/avatars/01.png' alt='person' />
                       </div>
-                      <div className="content">
-                        <h1>
-                          Assignment{" "}
-                          <span>
+                      <div className='content'>
+                        <h1 className='content-heading flex'>
+                          Assignment{' '}
+                          <span className='flex'>
                             {item.read ? (
-                              <div>
-                                (<p>Done</p> <FaCheck color="#16a34a" />)
+                              <div className='flex align-center '>
+                                (<p className='status'>Done</p> <FaCheck color='#16a34a' />)
                               </div>
                             ) : (
-                              <div>
-                                (<p>Not done</p> <GiCrossMark color="#dc2626" />)
+                              <div className='status flex align-center'>
+                                (<p>Not done</p> <GiCrossMark color='#dc2626' />)
                               </div>
                             )}
                           </span>
                         </h1>
-                        <p className="details">{item.message}</p>
+                        <p className='details'>{item.message}</p>
                       </div>
                     </div>
-                    <div className="right">
+                    <div className='right'>
                       <Dropdown
                         menu={{ items }}
-                        trigger="click"
-                        placement="bottom"
+                        trigger='click'
+                        placement='bottom'
                         onClick={(event) => {
                           event.stopPropagation();
                         }}

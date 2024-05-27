@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./style.scss";
-import { Checkbox, ConfigProvider, Form, notification } from "antd";
+import React, { useEffect, useState } from 'react';
+import './style.scss';
+import { Checkbox, ConfigProvider, Form, notification } from 'antd';
 import {
   LoginMain,
   Left,
@@ -10,9 +10,9 @@ import {
   AntdForm,
   AntdButton,
   AntdLoginTheme,
-} from "./StyledComponents";
-import { useFormik } from "formik";
-import { SignupAuth ,signupSchema ,LoginAuth} from "../../../UseCases";
+} from './styled-components';
+import { useFormik } from 'formik';
+import { SignupAuth ,SIGNUP_SCHEMA ,LoginAuth} from '../../../UseCases';
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,7 @@ export const Login = () => {
       username: '',
       password: ''
     },
-    validationSchema: signupSchema,
+    validationSchema: SIGNUP_SCHEMA,
     onSubmit: async (values) => {
       await handleSubmitForm(values);
     }
@@ -59,78 +59,86 @@ export const Login = () => {
   };
 
 
+  
+  useEffect(() => {
+    document.title = "Login";
+  }, [])
+  
+
 
   return (
     <>
       {contextHolder}
       <ConfigProvider theme={AntdLoginTheme}>
-        <LoginMain className="login-main">
-          <Left className="left">
+        <LoginMain className='login-main flex'>
+          <Left className='left flex align-center justify-center'>
             <img
-              src={require("../../../Ui_FrameWork/Assets/Images/illustration.svg").default}
-              alt="Illustration"
+            loading='lazy'
+              src={require('../../../Ui_FrameWork/Assets/Images/illustration.svg').default}
+              alt='Illustration'
             />
           </Left>
-          <Right className="right">
-            <AntdForm className="center" form={form} onFinish={handleSubmit}>
-              <div className="image">
-                <img src={require("../../../Ui_FrameWork/Assets/Images/pngwing.com (5).png")} alt="Logo" />
+          <Right className='right flex align-center justify-center flex-column'>
+            <AntdForm layout='vertical' className='center flex flex-column' form={form} onFinish={handleSubmit}>
+              <div className='image'>
+                <img loading='lazy'  src={require('../../../Ui_FrameWork/Assets/Images/pngwing.com (5).png')} alt='Logo' />
               </div>
-              <div className="heading">
+              <div className='heading'>
                 <h1>Welcome</h1>
-                <p>Please {isLogin ? "Login" : "Signup"} to continue</p>
+                <p>Please {isLogin ? 'Login' : 'Signup'} to continue</p>
               </div>
-              <div className="form-item">
-                <p>Username</p>
+              <Form.Item label="Username" className='form-item'>
+                {/* <p>Username</p> */}
                 <AntdInput
-                  name="username"
+                  name='username'
+                  
                   value={values.username}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  autoComplete="false"
-                  placeholder="Enter the username"
+                  autoComplete='false'
+                  placeholder='Enter the username'
                 />
                 {touched.username && errors.username ? (
-                  <div className="error">{errors.username}</div>
+                  <div className='error'>{errors.username}</div>
                 ) : null}
-              </div>
-              <div className="password">
-                <p>Password</p>
+              </Form.Item>
+              <Form.Item label="Password" className='password form-item'>
+                {/* <p>Password</p> */}
                 <AntdPasswordInput
-                  autoComplete = "false"
-                  name="password"
+                  autoComplete = 'false'
+                  name='password'
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Enter the password"
+                  placeholder='Enter the password'
                 />
                 {touched.password && errors.password ? (
-                  <div className="error">{errors.password}</div>
+                  <div className='error'>{errors.password}</div>
                 ) : null}
-              </div>
-              <AntdButton loading={loading} htmlType="submit">
-                {isLogin ? "Login" : "Signup"}
+              </Form.Item>
+              <AntdButton loading={loading} htmlType='submit'>
+                {isLogin ? 'Login' : 'Signup'}
               </AntdButton>
-              <div className="form-bottom-1">
+              <div className='form-bottom-1 flex align-center justify-between'>
                 <Form.Item
-                  name="remember"
-                  valuePropName="checked"
-                  className="remember-me"
+                  name='remember'
+                  valuePropName='checked'
+                  className='remember-me'
                 >
                   <Checkbox>Remember Me</Checkbox>
                 </Form.Item>
-                <p>Forget Password?</p>
+                <p className='text-underline'>Forget Password?</p>
               </div>
-              <div className="sign-login">
+              <div className='sign-login flex align-center justify-center'>
                 {isLogin ? (
                   <>
                     Don't have an account?
-                    <span onClick={changePage}>Signup</span>
+                    <span className='cursor-pointer text-underline' onClick={changePage}>Signup</span>
                   </>
                 ) : (
                   <>
                     Already have an account?
-                    <span onClick={changePage}>Login</span>
+                    <span className='cursor-pointer' onClick={changePage}>Login</span>
                   </>
                 )}
               </div>

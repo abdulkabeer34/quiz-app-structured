@@ -3,67 +3,55 @@
     position: relative;
 
     .area {
-
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background-color: #ffffffdb;
         backdrop-filter: blur(3.5px);
-        z-index: 999;
+        background-color: #ffffffdb;
+        height: 100%;
+        z-index: 999
+    }
+
+    .area,
+    .quiz-progress-bar {
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%
     }
 
     .quiz-progress-bar {
+        background-color: #58a916;
         height: 2px;
-        background-color: rgb(88, 169, 22);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        transition: width .5s ease;
+        transition: width .5s ease
     }
 
     @media(max-width:514px) {
-        padding: 0 15px;
+        padding-bottom: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 0
     }
 
     .upper-area {
         height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
-        .rout-link {
-            // background-color: white;
-            text-decoration: none;
-            color: white;
-        }
-
-        .upper-area-left {
-            display: flex;
-            align-items: center;
+        .Timer {
             gap: 10px;
 
             .left {
                 font-size: 29px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
 
                 @media(max-width:350px) {
-                    font-size: 18px !important;
+                    font-size: 18px !important
                 }
             }
 
             .right {
                 p {
-                    font-size: 10px;
                     color: #5d5d5d;
+                    font-size: 10px;
                     font-weight: 500;
 
                     @media(max-width:350px) {
-                        font-size: 7px !important;
+                        font-size: 7px !important
                     }
                 }
 
@@ -71,69 +59,62 @@
                     font-size: 18px;
 
                     @media(max-width:350px) {
-                        font-size: 14px !important;
+                        font-size: 14px !important
                     }
                 }
             }
-
         }
+
         .ant-btn {
+            color: #fff !important;
+
             :hover {
-                color: white !important;
+                color: #fff !important
             }
-            color: white !important;
         }
 
-
-        .upper-area-right {
+        .button {
             .btn {
-                font-weight: 600 I !important;
                 background: #166534 !important;
+                font-weight: 600 I !important;
                 margin-top: 0 !important;
 
                 @media(max-width:350px) {
-                    width: 100px !important;
                     font-size: 13px !important;
+                    width: 100px !important
                 }
 
-              
                 :hover {
-                    color: white !important;
+                    color: #fff !important
                 }
             }
         }
-
     }
 
     .mid-area {
-        margin-top: 30px;
         height: 100%;
-        min-height: 240px;
+        margin-top: 30px;
+        min-height: 240px
     }
 
     .bottom-area {
         margin-top: 70px;
         padding: 20px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
         @media(max-width:468px) {
-            margin-top: 30px;
+            margin-top: 30px
         }
-
 
         .antd-btn {
             background-color: transparent;
-            color: black;
-            border: 2px solid black;
+            border: 2px solid #000;
 
             @media(max-width:468px) {
-                font-size: 13px !important;
+                font-size: 13px !important
             }
 
             @media(max-width:350px) {
-                font-size: 10px !important;
+                font-size: 10px !important
             }
         }
     }

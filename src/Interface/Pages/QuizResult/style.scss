@@ -1,99 +1,84 @@
-.quiz-result-main{
+.quiz-result-main {
     padding: 30px 50px;
 
-
     .recorded-video {
-        position: relative;
-        margin-top: 40px;
-        right: 0;
         bottom: 0;
-        width: 40vw;
-      }
-      
+        margin-top: 40px;
+        position: relative;
+        right: 0;
+        width: 40vw
+    }
 
-    
     @media (max-width:370px) {
-        padding: 30px 10px;
+        padding-bottom: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 30px
     }
 
     .upper-area {
         height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
         h2 {
             font-weight: 501;
 
             @media (max-width:670px) {
-                font-size: 16px;
+                font-size: 16px
             }
 
             @media (max-width:290px) {
-                font-size: 12px;
+                font-size: 12px
             }
-
-        }
-
-
-        .rout-link{
-            // background-color: white;
-            text-decoration: none;
-            color: white;
         }
 
         .upper-area-left {
-            display: flex;
-            align-items: center;
             gap: 10px;
 
             .left {
                 color: #d5f9a3;
                 font-size: 29px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                @media(max-width:350px){
-                    font-size: 18px !important;
-                 }
+
+                @media(max-width:350px) {
+                    font-size: 18px !important
+                }
             }
 
             .right {
                 p {
-                    font-size: 10px;
                     color: #5d5d5d;
+                    font-size: 10px;
                     font-weight: 500;
-                    @media(max-width:350px){
-                        font-size: 7px !important;
-                     }
+
+                    @media(max-width:350px) {
+                        font-size: 7px !important
+                    }
                 }
 
                 h2 {
                     font-size: 18px;
-                    @media(max-width:350px){
-                        font-size: 14px !important;
-                     }
+
+                    @media(max-width:350px) {
+                        font-size: 14px !important
+                    }
                 }
             }
-
         }
 
         .upper-area-right {
             .btn {
-                font-weight: 600 I !important;
                 background: #166534 !important;
-                margin-top: 0  !important;
+                font-weight: 600 I !important;
+                margin-top: 0 !important;
 
-                @media(max-width:350px){
-                    width: 100px !important;
+                @media(max-width:350px) {
                     font-size: 13px !important;
-                 }
+                    width: 100px !important
+                }
 
                 :hover {
-                    color: white !important;
+                    color: #fff !important
                 }
             }
         }
-
     }
 }
