@@ -16,8 +16,8 @@ export const useMediaRecorder = (props) => {
   // its will be use to check the available devices on the devices
   const checkRequiredDevices = async () => {
     const devices = await navigator.mediaDevices.enumerateDevices();
-    const checkMicrophone = devices.some((e) => e.kind == "audioinput");
-    const checkCamera = devices.some((e) => e.kind == "videoinput");
+    const checkMicrophone = devices.some((e) => e.kind === 'audioinput');
+    const checkCamera = devices.some((e) => e.kind === 'videoinput');
     if (checkCamera && checkMicrophone) {
       return true;
     }
@@ -36,7 +36,7 @@ export const useMediaRecorder = (props) => {
       return { videoStream, audioStream };
     } catch (error) {
       throw new Error(
-        "You Denied The Acces Cant Start The Assignment Right Now"
+        'You Denied The Acces Cant Start The Assignment Right Now'
       );
       // return false;
     }
@@ -61,13 +61,13 @@ export const useMediaRecorder = (props) => {
       };
 
       videoRecorder.onstop = (e) => {
-        const blob = new Blob(videoChunks, { type: "video/webm" });
+        const blob = new Blob(videoChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         setScreenRecordedVideo(url);
       };
 
       audioRecorder.onstop = (e) => {
-        const blob = new Blob(audioChunks, { type: "video/webm" });
+        const blob = new Blob(audioChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         setRecordedVideo(url);
       };

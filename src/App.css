@@ -4,3 +4,64 @@
     padding: 0;
     font-family: 'poppins';
 }
+
+
+
+.flex{
+    display:flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-between{
+   justify-content: space-between;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+
+.justify-around{
+    justify-content: space-around;
+}
+
+
+.text-center{
+    text-align: center;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+
+.text-white{
+    color: white;
+}
+
+.text-black{
+    color: black !important;
+}
+
+.border-rounded{
+  border-radius:50%;
+}
+
+.grid{
+    display: grid;
+}
+
+.two-rows-column{
+    grid-template-columns: repeat(2, 264px);
+    grid-template-rows: repeat(2, auto);
+}

@@ -1,5 +1,5 @@
-export { signupSchema } from "./Schemas";
-export { notifications } from "./notifications";
-export * from "./apiData";
-export {columns as Columns} from "./quizHistoryTableColumn";
-export {basicInfo } from "./quizBasicInfo"
+export { SIGNUP_SCHEMA } from './schemas';
+export { NOTIFICATIONS } from './notifications';
+export * from './api-data';
+export {COLUMNS} from './quiz-history-table-column.js';
+export {BASIC_INFO } from './quiz-basic-info';

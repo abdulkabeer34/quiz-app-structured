@@ -1,4 +1,4 @@
-export { useLoginQuery } from "./useLoginQuery";
-export  { useQuizNotificationQuery } from "./useQuizNotificationQuery";
-export  { useQuizHistoryQuery } from "./useQuizHistoryQuery";
-export {useHandleSubmitQuizQuery} from "./useHandleSubmitQuizQuery";
+export { useLogin } from './useLogin';
+export  { useQuizNotification } from './useQuizNotification';
+export  { useQuizHistory } from './useQuizHistory';
+export {useHandleFormSubmit} from './useHandleFormSubmit';

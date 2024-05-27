@@ -1,8 +1,8 @@
-import React from "react";
-import "./style.scss";
-import { ConfigProvider, Radio } from "antd";
-import { decodeHtmlEntities } from "../../../../UseCases";
-import { AntdRadio } from "./StyledComponents";
+import React from 'react';
+import './style.scss';
+import { ConfigProvider, Radio } from 'antd';
+import { decodeHtmlEntities } from '../../../../UseCases';
+import { AntdRadio } from './styled-components';
 
 export const Boolean = ({ data, setSelectedAnswer }) => {
   if (!data) return null;
@@ -12,12 +12,12 @@ export const Boolean = ({ data, setSelectedAnswer }) => {
   question = decodeHtmlEntities(question);
 
   return (
-    <div className="boolean-main">
-      <div className="question">
+    <div className='boolean-main'>
+      <div className='question'>
         <h3>{question}</h3>
-        <div className="options">
+        <div className='options grid two-rows-column'>
           <Radio.Group
-            className="radio-group"
+            className='radio-group'
             value={selectedAnswer}
             onChange={(e) =>
               setSelectedAnswer && setSelectedAnswer(e.target.value)
@@ -26,7 +26,7 @@ export const Boolean = ({ data, setSelectedAnswer }) => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "black",
+                  colorPrimary: 'black',
                 },
               }}
             >

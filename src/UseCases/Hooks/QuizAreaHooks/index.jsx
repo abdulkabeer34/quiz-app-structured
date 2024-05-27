@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export const QuizAreaHooks = ({
   setCurrentQuestionIndex,
@@ -17,8 +16,8 @@ export const QuizAreaHooks = ({
 
     if (
       quizOptionLoading >= 0 ||
-      (currentQuestionIndex == data.quiz.length - 1 && value == 1) ||
-      (currentQuestionIndex == 0 && value == -1)
+      (currentQuestionIndex === data.quiz.length - 1 && value === 1) ||
+      (currentQuestionIndex === 0 && value === -1)
     )
       return;
     setCurrentQuestionIndex(currentQuestionIndex + value);
@@ -31,8 +30,8 @@ export const QuizAreaHooks = ({
     const changeQuestion = (value) => {
       if (
         quizOptionLoading >= 0 ||
-        (currentQuestionIndex == data.quiz.length - 1 && value == 1) ||
-        (currentQuestionIndex == 0 && value == -1)
+        (currentQuestionIndex === data.quiz.length - 1 && value === 1) ||
+        (currentQuestionIndex === 0 && value === -1)
       )
         return;
       setCurrentQuestionIndex(currentQuestionIndex + value);
@@ -41,9 +40,9 @@ export const QuizAreaHooks = ({
       });
     };
 
-    if (event.key === "ArrowLeft") {
+    if (event.key === 'ArrowLeft') {
       changeQuestion(-1);
-    } else if (event.key === "ArrowRight") {
+    } else if (event.key === 'ArrowRight') {
       changeQuestion(1);
     }
   };

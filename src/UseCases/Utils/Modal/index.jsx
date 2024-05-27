@@ -1,5 +1,6 @@
-import { Button, ConfigProvider, Modal } from "antd";
-import React from "react";
+import { Button,  Modal } from 'antd';
+import React from 'react';
+import { CreateQuizConfigProvider } from '../create-quiz-configprovider';
 
 export const AntdModal = ({
   message,
@@ -20,11 +21,11 @@ export const AntdModal = ({
       centered
       onCancel = {closeModal}
       footer={
-        <ConfigProvider theme={{ token: { colorPrimary: "black" } }}>
-          <Button type="primary" onClick={onOk} loading={confirmLoading}>
+        <CreateQuizConfigProvider theme={{ token: { colorPrimary: 'black' } }}>
+          <Button type='primary' onClick={onOk} loading={confirmLoading}>
             {footerMessage}
           </Button>
-        </ConfigProvider>
+        </CreateQuizConfigProvider>
       }
     >
       {header && header}

@@ -1,2 +1,2 @@
-export {LoginAuth} from "./LoginAuth"
-export {SignupAuth} from "./SignupAuth"
+export {LoginAuth} from './login-auth';
+export {SignupAuth} from './signup-auth'

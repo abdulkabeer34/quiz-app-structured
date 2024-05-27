@@ -1,18 +1,23 @@
-import { PlusOutlined } from "@ant-design/icons";
-import React, {  useState } from "react";
-import "./style.scss";
-import { Button, Input, message } from "antd";
-import { Box, AntdInput } from "./StyledComponents";
-import { useLoginQuery, useQuizNotificationQuery } from "../../../../UseCases";
-import { ContactList } from "../ContactList";
-import { AntdModal, CreateQuizConfigProvider, FloatingButtonAntd, basicInfo, useCreateQuizHandler } from "../../../../UseCases";
+import { PlusOutlined } from '@ant-design/icons';
+import React, {  useEffect, useState } from 'react';
+import './style.scss';
+import { Button, Input, message } from 'antd';
+import { Box, AntdInput } from './styled-components';
+import { useLogin, useQuizNotification } from '../../../../UseCases';
+import { ContactList } from '../ContactList';
+import { AntdModal, CreateQuizConfigProvider, FloatingButtonAntd, BASIC_INFO, useCreateQuizHandler } from '../../../../UseCases';
 
 export const CreateQuiz = () => {
   const [questions, setQuestion] = useState({
     quiz: [],
-    basicInfo,
-    dataId: "",
+    BASIC_INFO,
+    dataId: '',
   });
+
+  useEffect(() => {
+    document.title = "Create Quiz";
+  }, [])
+  
 
 
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -20,12 +25,12 @@ export const CreateQuiz = () => {
   const [open, setOpen] = useState(false);
   const token = localStorage.getItem('token');
 
-  const { AddOpt, AddQuiz, DeleteOpt, UpdateOpt, UpdateQuiz, DeleteData } =
+  const { addOpt, addQuiz, deleteOpt, updateOpt, updateQuiz, deleteData } =
     useCreateQuizHandler({ questions, setQuestion, messageApi });
 
 
-  const {loginData:{data:contactList,isLoading}} = useLoginQuery();
-  const {sendNotificationsAllMutation } = useQuizNotificationQuery();
+  const {loginData:{data:contactList,isLoading}} = useLogin();
+  const {sendNotificationsAllMutation } = useQuizNotification();
 
 
   if(isLoading) return;
@@ -41,7 +46,7 @@ export const CreateQuiz = () => {
 
 
   return (
-    <div className="create-quiz-main">
+    <div className='create-quiz-main'>
       <CreateQuizConfigProvider>
         <AntdModal
           message={
@@ -53,90 +58,90 @@ export const CreateQuiz = () => {
           onOk={async () => await sendALl()}
           closeModal={()=>setOpen(false)}
           open={open}
-          style={{ heigth: "80vw" }}
+          style={{ heigth: '80vw' }}
           header={
-            <h1 style={{ fontSize: "15px", padding: "0 24px" }}>
+            <h1 style={{ fontSize: '15px', padding: '0 24px' }}>
               Send to someone
             </h1>
           }
           confirmLoading={confirmLoading}
-          footerMessage={"Send All"}
+          footerMessage={'Send All'}
         />
         <FloatingButtonAntd
           icon={PlusOutlined}
-          tooltip={"Create Quiz"}
-          callback={AddQuiz}
+          tooltip={'Create Quiz'}
+          callback={addQuiz}
           animation
-          className="floating-icon"
+          className='floating-icon'
         />
         {contextHolder}
         <div>
-          <div className="quizez">
-            <div style={{ width: "100%" }}>
+          <div className='quizez flex align-center flex-column'>
+            <div style={{ width: '100%' }}>
               <Button
-                type="primary"
+                type='primary'
                 width={100}
                 style={{
-                  float: "right",
-                  display: questions.quiz.length == 0 && "none",
+                  float: 'right',
+                  display: questions.quiz.length === 0 && 'none',
                 }}
                 onClick={() => setOpen(true)}
               >
                 Send It
               </Button>
             </div>
-            {questions.quiz.length == 0 ? (
+            {questions.quiz.length === 0 ? (
               <h1>No Question Added , Plz Add the Questions</h1>
             ) : (
               questions.quiz.map((item, index) => {
                 const { question, shuffledAnswers } = item;
                 return (
-                  <div className="boxes" key={index}>
-                    <Box className="box">
-                      <div className="center">
+                  <div className='boxes' key={index}>
+                    <Box className='box'>
+                      <div className='center'>
                         <PlusOutlined
-                          className="cross-icon"
-                          onClick={() => DeleteData(index)}
+                          className='cross-icon border-rounded'
+                          onClick={() => deleteData(index)}
                         />
-                        <div className="center">
-                          <div className="question">
+                        <div className='center'>
+                          <div className='question flex'>
                             <h2>Question:</h2>
                             <AntdInput
-                              className="question-input"
-                              placeholder="Enter the title of you question here"
-                              type="text"
+                              className='question-input'
+                              placeholder='Enter the title of you question here'
+                              type='text'
                               value={question}
                               onChange={(e) =>
-                                UpdateQuiz(e.target.value, index)
+                                 updateQuiz(e.target.value, index)
                               }
                             />
                             <Button
-                              onClick={(e) => AddOpt(index)}
-                              type="primary"
+                              onClick={(e) => addOpt(index)}
+                              type='primary'
                             >
                               Add Option
                             </Button>
                           </div>
-                          <div className="options">
+                          <div className='options flex flex-column align-center'>
                             {shuffledAnswers.length != 0 ? (
                               shuffledAnswers.map((item, subIndex) => {
                                 return (
-                                  <div className="center1" key={subIndex}>
+                                  <div className='center-inner cursor-pointer text-center' key={subIndex}>
                                     <PlusOutlined
-                                      className="cross-icon"
-                                      onClick={() => DeleteOpt(index, subIndex)}
+                                      className='cross-icon border-rounded cursor-pointer'
+                                      onClick={() => deleteOpt(index, subIndex)}
                                     />
                                     <Input
                                       key={subIndex}
-                                      className="option1"
+                                      className='option-inner'
                                       value={item}
                                       onChange={(e) =>
-                                        UpdateOpt(
+                                        updateOpt(
                                           index,
                                           subIndex,
                                           e.target.value
                                         )
-                                      }
+                                      } 
                                     />
                                   </div>
                                 );

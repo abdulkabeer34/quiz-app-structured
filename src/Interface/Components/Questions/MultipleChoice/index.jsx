@@ -1,10 +1,10 @@
-import React from "react";
-import "./style.scss";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { setColors } from "./Attributes";
-import { decodeHtmlEntities } from "../../../../UseCases";
-import { Button } from "antd";
-import { useSelector } from "react-redux";
+import React from 'react';
+import './style.scss';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import { setColors } from './Attributes';
+import { decodeHtmlEntities } from '../../../../UseCases';
+import { Button } from 'antd';
+import { useSelector } from 'react-redux';
 
 export const MultipleChoice = ({ data, setSelectedAnswer }) => {
   const quizOptionLoading = useSelector((e) => e.quizStore.quizOptionLoading);
@@ -15,20 +15,20 @@ export const MultipleChoice = ({ data, setSelectedAnswer }) => {
   let { question, shuffledAnswers, selectedAnswer, corectAnswerIndex } = data;
   question = decodeHtmlEntities(question);
   return (
-    <div className="multiple-choice-main">
-      <div className="question">
+    <div className='multiple-choice-main'>
+      <div className='question'>
         <h3>{question}</h3>
         <p>
-          {selectedAnswer == "undefined"
-            ? "(Not Selected)"
+          {selectedAnswer === 'undefined'
+            ? '(Not Selected)'
             : setSelectedAnswer
-            ? ""
-            : selectedAnswer == corectAnswerIndex
-            ? "(correct Answer)"
-            : "(Incorrect Answer)"}
+            ? ''
+            : selectedAnswer === corectAnswerIndex
+            ? '(correct Answer)'
+            : '(Incorrect Answer)'}
         </p>
 
-        <div className="options">
+        <div className='options  grid two-rows-column'>
           {shuffledAnswers.map((item, index) => {
             const { color, backgroundColor } = setColors(
               index,
@@ -40,7 +40,7 @@ export const MultipleChoice = ({ data, setSelectedAnswer }) => {
             return (
               <Button
                 disabled={quizOptionLoading > 0 && quizOptionLoading < 4}
-                loading={index == quizOptionLoading}
+                loading={index === quizOptionLoading}
                 key={index}
                 style={{
                   color: color,
@@ -48,10 +48,10 @@ export const MultipleChoice = ({ data, setSelectedAnswer }) => {
                   borderColor: color,
                 }}
                 onClick={() => setSelectedAnswer && setSelectedAnswer(index)}
-                className="option1"
+                className='option1 cursor-pointer flex align-center justify-center text-center'
               >
-                {index == selectedAnswer && setSelectedAnswer && (
-                  <IoMdCheckmarkCircleOutline className="icon" />
+                {index === selectedAnswer && setSelectedAnswer && (
+                  <IoMdCheckmarkCircleOutline className='icon' />
                 )}
                 {item}
               </Button>
