@@ -1,6 +1,4 @@
-import { Navbar } from '../../Interface';
-import { ErrorPage } from '../../Interface';
-import { CreateQuiz, Home, Login, Notifications, QuizArea, QuizHistory, QuizResult, } from '../../Interface/Pages';
+import { CreateQuiz, Home, Login, Notifications, QuizArea, QuizHistory, QuizResult,ErrorPage ,Navbar} from '../../Interface';
 import { createBrowserRouter } from 'react-router-dom';
 
 

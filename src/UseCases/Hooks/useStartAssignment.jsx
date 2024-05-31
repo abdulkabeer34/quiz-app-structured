@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useUpdateTime } from './useCalculateTime';
-import { setData, setQuizAreaButtonLoading } from '../Store';
-import { useContext } from 'react';
-import { QuizAreaContext } from '../Store';
-import { toggleModal } from '../Store';
-import { useQuizHistory } from './Query';
+import { useDispatch, useSelector } from "react-redux";
+import { useUpdateTime } from "./useCalculateTime";
+import { setData, setQuizAreaButtonLoading } from "../Store";
+import { useContext } from "react";
+import { QuizAreaContext } from "../Store";
+import { toggleModal } from "../Store";
+import { useQuizHistory } from "./Query";
 
 export const useStartAssignmentData = () => {
   const updateTime = useUpdateTime();
@@ -14,7 +14,7 @@ export const useStartAssignmentData = () => {
   const { mutation } = useQuizHistory(false);
 
   const {
-  startInterval,
+    startInterval,
     checkRequiredDevices,
     getDevicesAccess,
     startRecording,
@@ -28,16 +28,18 @@ export const useStartAssignmentData = () => {
         toggleModal({
           open: true,
           message:
-            'before starting the assignment you have to give us the acces of you camera and microphone erro3',
+            "before starting the assignment you have to give us the acces of you camera and microphone erro3",
           confirmLoading: true,
-          type: 'media access',
-          footerMessage: 'Processing',
+          type: "media access",
+          footerMessage: "Processing",
         })
       );
 
       try {
         const { audioStream, videoStream } = await getDevicesAccess();
         await startRecording({ audioStream, videoStream });
+
+
         dispatch(
           toggleModal({
             open: false,
@@ -45,14 +47,15 @@ export const useStartAssignmentData = () => {
           })
         );
       } catch (error) {
+        console.log(error);
         dispatch(
-        toggleModal({
+          toggleModal({
             open: true,
             message:
-              'acces failed cannot get the assignment  started plz try starting the assignment again error2',
+              "acces failed cannot get the assignment  started plz try starting the assignment again error2",
 
             confirmLoading: false,
-            footerMessage: 'ok',
+            footerMessage: "ok",
           })
         );
         return;
@@ -62,9 +65,9 @@ export const useStartAssignmentData = () => {
         toggleModal({
           open: true,
           message:
-            'acces failed cannot get the assignment  started plz try starting the assignment again error1',
+            "acces failed cannot get the assignment  started plz try starting the assignment again error1",
           confirmLoading: false,
-          footerMessage: 'ok',
+          footerMessage: "ok",
         })
       );
       return;
@@ -85,12 +88,12 @@ export const useStartAssignmentData = () => {
       dataId,
       startingDate,
       expirationTime,
-      submited: 'not submitted',
-    })
+      submited: "not submitted",
+    });
 
     const newData = {
       ...data,
-      basicInfo: { ...data.basicInfo, startingDate, submited: 'not submitted' },
+      basicInfo: { ...data.basicInfo, startingDate, submited: "not submitted" },
     };
 
     dispatch(setData(newData));

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './style.scss';
-import { Button, ConfigProvider, Form, InputNumber, message } from 'antd';
+import { Button, Form, InputNumber, message ,Spin} from 'antd';
 import { AntdCascader, CustomModalAntd, FormItem } from './styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setData , CATEGORIES_DATASET, DIFFICULTY_DATASET, TYPE_DATASET,useHandleFormSubmit} from '../../../UseCases';
+import './style.scss';
+import { setData, CATEGORIES_DATASET, DIFFICULTY_DATASET, TYPE_DATASET, useHandleFormSubmit, CreateQuizConfigProvider } from '../../../UseCases';
 
 export const Home = () => {
   const [open, setOpen] = useState(false);
@@ -50,7 +50,7 @@ export const Home = () => {
     
     <div className='home-main flex align-center flex-column text-center'>
       {contextHolder}
-      <ConfigProvider theme={{ token: { colorPrimary: 'black' } }}>
+      <CreateQuizConfigProvider >
         <div className='center  flex align-center flex-column'>
           <h1 className='main-heading'>My Quiz App</h1>
           <p className='main-details'>
@@ -73,8 +73,10 @@ export const Home = () => {
           width={500}
         >
           <h1>Enter the Quiz data</h1>
-          <Form
+        <Spin spinning={loading}>
+        <Form
           layout='vertical'
+          
             onFinish={(e) => handleFormSubmit(e)}
             initialValues={{
               amount: 3,
@@ -86,11 +88,10 @@ export const Home = () => {
             <div className='form-items'>
               <FormItem className='form-item' width='50%'>
                 <Form.Item label='Number of Questions:'    name='amount'>
-                  <InputNumber min={1} max={100} />
+                  <InputNumber min={1} max={50} />
                 </Form.Item>
               </FormItem>
               <FormItem width='40%'>
-                {/* <p>Select Category:</p> */}
                 <Form.Item label='Select Category:' name='category'>
                   <AntdCascader options={CATEGORIES_DATASET} />
                 </Form.Item>
@@ -107,12 +108,13 @@ export const Home = () => {
                 </Form.Item>
               </FormItem>
             </div>
-            <Button loading={loading} className='submit-btn text-white' htmlType='submit'>
+            <Button  className='submit-btn text-white' htmlType='submit'>
               Start The Quiz
             </Button>
           </Form>
+        </Spin>
         </CustomModalAntd>
-      </ConfigProvider>
+      </CreateQuizConfigProvider>
     </div>
   );
 };

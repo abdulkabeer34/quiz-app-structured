@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { Dropdown,  Empty } from 'antd';
-import { IoEllipsisHorizontal } from 'react-icons/io5';
+import { Dropdown, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { IoSettingsOutline, IoEllipsisHorizontal } from 'react-icons/io5';
 import { FaCheck } from 'react-icons/fa';
 import { GiCrossMark } from 'react-icons/gi';
 import { useQuizNotification } from '../../../UseCases';
 import { FullWidthSkeletonInput } from './styled-components';
+
 
 export const Notifications = () => {
   const token = localStorage.getItem('token');
@@ -83,9 +83,6 @@ export const Notifications = () => {
                     ),
                   },
                 ];
-
-
-                
 
                 return (
                   <div className='notification cursor-pointer flex align-center justify-between' key={index}>

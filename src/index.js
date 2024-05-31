@@ -13,8 +13,8 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <ContextProvider>
       <Provider store={store}>
-          <App />
-          <ReactQueryDevtools />
+        <App />
+        <ReactQueryDevtools />
       </Provider>
     </ContextProvider>
   </QueryClientProvider>

@@ -10,13 +10,9 @@ export const QuizHistory = () => {
   let { queryData } = useQuizHistory(false,token);
   let { data } = queryData;
 
-  
   useEffect(() => {
     document.title = "History";
   }, [])
-  
-
-
 
   return (
     <div className='history-main'>

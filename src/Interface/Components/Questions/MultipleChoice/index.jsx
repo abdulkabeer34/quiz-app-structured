@@ -1,10 +1,9 @@
 import React from 'react';
 import './style.scss';
-import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
-import { setColors } from './Attributes';
-import { decodeHtmlEntities } from '../../../../UseCases';
 import { Button } from 'antd';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { useSelector } from 'react-redux';
+import { colorCodeGenerator, decodeHtmlEntities } from '../../../../UseCases';
 
 export const MultipleChoice = ({ data, setSelectedAnswer }) => {
   const quizOptionLoading = useSelector((e) => e.quizStore.quizOptionLoading);
@@ -30,7 +29,7 @@ export const MultipleChoice = ({ data, setSelectedAnswer }) => {
 
         <div className='options  grid two-rows-column'>
           {shuffledAnswers.map((item, index) => {
-            const { color, backgroundColor } = setColors(
+            const { color, backgroundColor } = colorCodeGenerator(
               index,
               selectedAnswer,
               setSelectedAnswer,

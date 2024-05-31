@@ -1,4 +1,4 @@
-export const BASIC_INFO = {
+export const basicInfo = {
   amount: 3,
   category: 'any',
   difficulty: 'any',

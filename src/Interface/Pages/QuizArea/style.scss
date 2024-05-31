@@ -1,6 +1,12 @@
 .quiz-area-main {
     padding: 0 50px;
     position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // max-height: 100vh;
+
 
     .area {
         backdrop-filter: blur(3.5px);
@@ -74,6 +80,9 @@
         }
 
         .button {
+            gap: 30px;
+            background-color: transparent;
+
             .btn {
                 background: #166534 !important;
                 font-weight: 600 I !important;
@@ -92,7 +101,7 @@
     }
 
     .mid-area {
-        height: 100%;
+        // height: 100%;
         margin-top: 30px;
         min-height: 240px
     }
@@ -103,6 +112,11 @@
 
         @media(max-width:468px) {
             margin-top: 30px
+        }
+
+
+        .nav-btn {
+            z-index: 1;
         }
 
         .antd-btn {

@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { Checkbox, ConfigProvider, Form, notification } from 'antd';
-import {
-  LoginMain,
-  Left,
-  Right,
-  AntdInput,
-  AntdPasswordInput,
-  AntdForm,
-  AntdButton,
-  AntdLoginTheme,
-} from './styled-components';
+import { LoginMain, Left, Right, AntdInput, AntdPasswordInput, AntdForm, AntdButton, AntdLoginTheme } from './styled-components';
 import { useFormik } from 'formik';
-import { SignupAuth ,SIGNUP_SCHEMA ,LoginAuth} from '../../../UseCases';
+import { SignupAuth, SIGNUP_SCHEMA, LoginAuth } from '../../../UseCases';
+
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);

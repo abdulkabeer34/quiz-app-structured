@@ -1,4 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+
+;
 import { Modal,Cascader } from 'antd';
 
 export const CustomModalAntd = styled(Modal)`
@@ -22,7 +25,7 @@ export const CustomModalAntd = styled(Modal)`
     }
 
     .submit-btn {
-      background-color: black;
+      // background-color: black;
       width: 200px;
       height: 40px;
       float: right;
