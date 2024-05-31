@@ -21,7 +21,7 @@ export const AntdModal = ({
       centered
       onCancel = {closeModal}
       footer={
-        <CreateQuizConfigProvider theme={{ token: { colorPrimary: 'black' } }}>
+        <CreateQuizConfigProvider   >
           <Button type='primary' onClick={onOk} loading={confirmLoading}>
             {footerMessage}
           </Button>

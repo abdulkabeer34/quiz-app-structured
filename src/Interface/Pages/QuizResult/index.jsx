@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './style.scss';
-import { Boolean, MultipleChoice } from '../../Components';
+import { Empty } from 'antd';
 import { useParams } from 'react-router-dom';
-import { ConfigProvider, Empty } from 'antd';
-import { useQuizHistory,QuizAreaContext } from '../../../UseCases';
+import { Boolean, MultipleChoice } from '../../Components';
+import { ConfigProvider } from 'antd';
+import { useQuizHistory, QuizAreaContext } from '../../../UseCases';
+
 
 export const QuizResult = () => {
   const { id: dataId } = useParams();
@@ -36,7 +38,7 @@ export const QuizResult = () => {
           const { type } = item;
 
           return (
-            <div style={{ marginTop: '50px' }} key={index}>
+            <div  className='result-quest' key={index}>
               <h3>Question {index + 1}.</h3>
               {type === 'boolean' ? (
                 <Boolean key={index} data={item} setSelectedAnswer={false} />

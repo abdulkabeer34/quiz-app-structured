@@ -21,6 +21,12 @@ export const CreateQuizConfigProvider = ({ children }) => {
             hoverBorderColor: 'black',
             activeBg:'#e2e2e2'
           },
+          Button:{
+            // defaultActiveBg:"white",
+            colorBgContainer:"black",
+            defaultHoverBg:"white",
+            colorText:"white"
+          }
         },
       }}
     >

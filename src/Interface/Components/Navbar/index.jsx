@@ -1,9 +1,9 @@
-import { Link,Outlet } from 'react-router-dom';
-import './style.scss';
 import React, { useState } from 'react';
+import './style.scss';
+import { Link, Outlet } from 'react-router-dom';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { HiBars3 } from 'react-icons/hi2';
-import {Sidebar} from '../SideBar';
+import { Sidebar } from '../SideBar';
 
 
 export const Navbar = () => {

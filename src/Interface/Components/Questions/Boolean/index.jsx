@@ -4,17 +4,29 @@ import { ConfigProvider, Radio } from 'antd';
 import { decodeHtmlEntities } from '../../../../UseCases';
 import { AntdRadio } from './styled-components';
 
+
 export const Boolean = ({ data, setSelectedAnswer }) => {
   if (!data) return null;
 
 
-  let { question, selectedAnswer ,correctAnswer, incorrectAnswers} = data;
+  let { question, selectedAnswer ,correct_Answer} = data;
   question = decodeHtmlEntities(question);
+
+   const corectAnswerIndex  = correct_Answer === "True" ? 0 : 1;
 
   return (
     <div className='boolean-main'>
       <div className='question'>
         <h3>{question}</h3>
+        <p>
+          {selectedAnswer === 'undefined'
+            ? '(Not Selected)'
+            : setSelectedAnswer
+            ? ''
+            : selectedAnswer === corectAnswerIndex
+            ? '(correct Answer)'
+            : '(Incorrect Answer)'}
+        </p>
         <div className='options grid two-rows-column'>
           <Radio.Group
             className='radio-group'

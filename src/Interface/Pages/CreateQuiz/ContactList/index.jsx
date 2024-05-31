@@ -38,10 +38,9 @@ export const ContactList = ({ questions, confirmLoading }) => {
               <div className='main-info flex'>
                 <div className='image'>
                   <img
-                  alt='person'
+                    alt='person'
                     className='img'
                     loading='lazy'
-                    style={{ width: '2.25rem' }}
                     src='https://ui.shadcn.com/avatars/03.png'
                   />
                 </div>

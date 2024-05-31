@@ -1,16 +1,16 @@
-import { PlusOutlined } from '@ant-design/icons';
-import React, {  useEffect, useState } from 'react';
-import './style.scss';
+import React, { useEffect, useState } from 'react';
 import { Button, Input, message } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import './style.scss';
 import { Box, AntdInput } from './styled-components';
-import { useLogin, useQuizNotification } from '../../../../UseCases';
 import { ContactList } from '../ContactList';
-import { AntdModal, CreateQuizConfigProvider, FloatingButtonAntd, BASIC_INFO, useCreateQuizHandler } from '../../../../UseCases';
+import { useLogin, useQuizNotification } from '../../../../UseCases';
+import { AntdModal, CreateQuizConfigProvider, FloatingButtonAntd, basicInfo as basicInfo, useCreateQuizHandler } from '../../../../UseCases';
 
 export const CreateQuiz = () => {
   const [questions, setQuestion] = useState({
     quiz: [],
-    BASIC_INFO,
+    basicInfo,
     dataId: '',
   });
 
@@ -77,7 +77,7 @@ export const CreateQuiz = () => {
         {contextHolder}
         <div>
           <div className='quizez flex align-center flex-column'>
-            <div style={{ width: '100%' }}>
+            <div  className='send-btn'>
               <Button
                 type='primary'
                 width={100}

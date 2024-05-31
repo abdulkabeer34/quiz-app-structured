@@ -1,3 +1,4 @@
+export { colorCodeGenerator } from './color-code-generator';
 export { CreateQuizConfigProvider } from './create-quiz-configprovider';
 export  { flattenObjectValues } from './flate-object-values';
 export { calculateCountDown } from './calculate-countDown';
