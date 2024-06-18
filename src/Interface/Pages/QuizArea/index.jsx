@@ -55,9 +55,6 @@ export const QuizArea = () => {
 
   useEffect(() => {
     if (isLoading) return;
-
-    console.log(info)
-
     const currentQuiz = info.find((item) => item.dataId === dataId);
     dispatch(setData(currentQuiz));
 
